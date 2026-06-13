@@ -97,7 +97,7 @@ def setup_venv():
 
     # 升级 pip
     log("  升级 pip ...")
-    sh(f'"{pip}" install --upgrade pip', cwd=BACKEND_DIR, timeout=60)
+    sh(f'"{python}" -m pip install --force-reinstall pip', cwd=BACKEND_DIR, timeout=60)
 
     # 安装依赖
     log("  安装 Python 依赖 ...")

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Agnes Studio Auto-Launcher
+Agnes Video Workflow Auto-Launcher
 双击 -> 全自动: 环境检查 -> 装依赖 -> 清端口(自动切换) -> 启动 -> 开浏览器
 
 特性:
@@ -294,7 +294,7 @@ def main():
     os.system("cls")
     print()
     print("=" * 56)
-    print("  Agnes Studio - 全自动启动")
+    print("  Agnes Video Workflow - 全自动启动")
     print("=" * 56)
     print()
 
@@ -336,9 +336,10 @@ def main():
         log("  [OK] venv 已存在")
 
     pip = str(BACKEND_DIR / "venv" / "Scripts" / "pip.exe")
+    python = str(BACKEND_DIR / "venv" / "Scripts" / "python.exe")
     # 先升级 pip 本身（新 Python 版本的 pip 可能较旧）
     log("  升级 pip ...")
-    sh(f'"{pip}" install --upgrade pip', cwd=BACKEND_DIR, quiet=False, timeout=60)
+    sh(f'"{python}" -m pip install --force-reinstall pip', cwd=BACKEND_DIR, quiet=False, timeout=60)
 
     log("  安装 Python 依赖 (--prefer-binary) ...")
     c, out, err = sh(
