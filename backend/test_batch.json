@@ -1,0 +1,7 @@
+{
+  "name": "Sunset Workflow",
+  "steps": [
+    {"id": "s1", "type": "chat_optimize", "prompt": "Ocean sunset waves", "config": {}},
+    {"id": "s2", "type": "text2image", "prompt": "", "config": {"model": "agnes-image-2.1-flash", "size": "1024x1024", "n": 1}}
+  ]
+}

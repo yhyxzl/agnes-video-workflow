@@ -1,0 +1,68 @@
+==================================================================
+  Agnes Studio -- 启动指南
+==================================================================
+
+【全新电脑（无任何环境）】
+-----------------------------
+  1. 安装 Python 3.10+
+     https://www.python.org/downloads/ (勾选 "Add to PATH")
+
+  2. 安装 Node.js 18+
+     https://nodejs.org/ (下载 LTS 版本)
+
+  3. 双击 setup.py  或  python setup.py
+     → 自动安装所有依赖（venv、pip install、npm install）
+
+  4. 双击 launcher.py  → 一键启动
+
+  或直接用一键启动（launcher.py 会自动处理依赖安装）：
+    python launcher.py
+
+=============================
+
+【已有环境】
+-----------------------------
+  方法 1（推荐）：
+    双击 launcher.py → 自动完成：
+      环境检查 → 依赖安装 → 端口检测(自动切换) → 服务启动
+
+  方法 2（手动）：
+    cd backend
+    venv\Scripts\activate
+    pip install -r requirements.txt
+    python -m uvicorn main:app --host 127.0.0.1 --port 9191 --reload
+
+    cd frontend
+    npm install
+    npx vite --port 5173 --host
+
+=============================
+
+【功能说明】
+-----------------------------
+  · 图片生成 → 输出浮窗显示（显示 URL + 复制按钮）
+  · 视频生成 → 支持上传本地图片作为图生视频素材
+  · 端口冲突 → 自动尝试下一个可用端口
+
+=============================
+
+【常见问题】
+-----------------------------
+  Q: 端口被占用了？
+  A: launcher.py 会自动检测并切换端口。也可手动：
+     netstat -ano | findstr ":9191"
+     taskkill /F /PID <进程号>
+
+  Q: 后端报错 "ModuleNotFoundError"？
+  A: cd backend && venv\Scripts\activate && pip install -r requirements.txt
+
+  Q: 前端白屏 / 访问不了？
+  A: 检查前端是否启动成功，浏览器打开 http://localhost:5173
+
+  Q: 图片不显示？
+  A: 检查输出目录设置（Settings 中配置 output_dir）
+     或者在 .env 文件中设置 output_dir=C:\your\output\path
+
+==================================================================
+  项目路径: C:\Users\optim\Desktop\Agnes-Studio
+==================================================================
